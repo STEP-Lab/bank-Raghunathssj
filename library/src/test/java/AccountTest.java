@@ -1,11 +1,8 @@
 import com.bank.Account;
-import com.bank.InsufficientFundsException;
 import com.bank.InvalidAccountNumberException;
 import com.bank.MinimumBalanceException;
 import org.junit.Before;
 import org.junit.Test;
-
-import javax.naming.InsufficientResourcesException;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertEquals;
@@ -17,12 +14,12 @@ public class AccountTest {
 
     @Before
     public void setUp() throws MinimumBalanceException, InvalidAccountNumberException {
-        account = new Account("1234-1234", 1000);
+        account = new Account("1234-1234", 2000);
     }
 
     @Test
     public void getBalance() {
-        assertEquals(account.getBalance(), 1000, 0);
+        assertEquals(account.getBalance(), 2000, 0);
     }
 
     @Test
@@ -41,12 +38,12 @@ public class AccountTest {
     }
 
     @Test
-    public void withdraw() throws InsufficientFundsException {
-        assertEquals(account.withdraw(200),800,0);
+    public void withdraw() throws MinimumBalanceException {
+        assertEquals(account.withdraw(200),1800,0);
     }
 
-    @Test(expected =InsufficientFundsException.class)
-    public void InsufficientFundsException() throws InsufficientFundsException {
-        account.withdraw(1100);
+    @Test(expected =MinimumBalanceException.class)
+    public void InsufficientFundsException() throws MinimumBalanceException {
+        account.withdraw(2100);
     }
 }
