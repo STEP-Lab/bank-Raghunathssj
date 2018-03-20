@@ -37,4 +37,8 @@ public class Account {
         validateBalance(this.getBalance() - amount);
         return balance -= amount;
     }
+
+    public float deposit(float amount) {
+        return balance += amount;
+    }
 }

@@ -46,4 +46,9 @@ public class AccountTest {
     public void InsufficientFundsException() throws MinimumBalanceException {
         account.withdraw(2100);
     }
+
+    @Test
+    public void deposit() {
+        assertEquals(account.deposit(1000),3000,0);
+    }
 }
