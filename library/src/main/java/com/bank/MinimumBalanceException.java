@@ -1,7 +1,7 @@
 package com.bank;
 
 public class MinimumBalanceException extends Throwable {
-    MinimumBalanceException() {
+    MinimumBalanceException(){
         super("Insufficient minimum balance");
     }
 }
