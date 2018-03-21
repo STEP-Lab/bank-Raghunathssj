@@ -15,12 +15,12 @@ public class Account {
         }
     }
 
-    private float getBalance() {
+    public float getBalance() {
         return balance;
     }
 
     public float debit(float amount) throws MinimumBalanceException {
-        validateBalance(this.getBalance() - amount);
+        validateBalance(balance - amount);
         return balance -= amount;
     }
 

@@ -16,6 +16,11 @@ public class AccountTest {
         account = new Account(new AccountNumber("1234-1234"), 2000);
     }
 
+    @Test
+    public void getBalance() {
+        assertEquals(account.getBalance(),2000,0);
+    }
+
     @Test(expected = MinimumBalanceException.class)
     public void mustThrowExceptionIfMinimumBalanceIsNotPresent() throws MinimumBalanceException, InvalidAccountNumberException {
         new Account(new AccountNumber("1234-1234"),200);
