@@ -19,12 +19,12 @@ public class Account {
         return balance;
     }
 
-    public float withdraw(float amount) throws MinimumBalanceException {
+    public float debit(float amount) throws MinimumBalanceException {
         validateBalance(this.getBalance() - amount);
         return balance -= amount;
     }
 
-    public float deposit(float amount) {
+    public float credit(float amount) {
         return balance += amount;
     }
 }

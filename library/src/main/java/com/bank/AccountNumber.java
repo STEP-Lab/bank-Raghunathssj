@@ -8,7 +8,6 @@ public class AccountNumber {
 
     public AccountNumber(String number) throws InvalidAccountNumberException {
         validateAccountNumber(number);
-        String number1 = number;
     }
 
     private void validateAccountNumber(String accountNumber) throws InvalidAccountNumberException {

@@ -17,22 +17,22 @@ public class AccountTest {
     }
 
     @Test(expected = MinimumBalanceException.class)
-    public void checkMinimumBalance() throws MinimumBalanceException, InvalidAccountNumberException {
+    public void mustThrowExceptionIfMinimumBalanceIsNotPresent() throws MinimumBalanceException, InvalidAccountNumberException {
         new Account(new AccountNumber("1234-1234"),200);
     }
 
     @Test
-    public void withdraw() throws MinimumBalanceException {
-        assertEquals(account.withdraw(200),1800,0);
+    public void debitAmountFromAccount() throws MinimumBalanceException {
+        assertEquals(account.debit(200),1800,0);
     }
 
     @Test(expected =MinimumBalanceException.class)
-    public void InsufficientFundsException() throws MinimumBalanceException {
-        account.withdraw(2100);
+    public void mustThrowMinimumBalanceExceptionIfMinimumBalanceIsNotPresent() throws MinimumBalanceException {
+        account.debit(2100);
     }
 
     @Test
-    public void deposit() {
-        assertEquals(account.deposit(1000),3000,0);
+    public void creditAmountFromAccount() {
+        assertEquals(account.credit(1000),3000,0);
     }
 }
