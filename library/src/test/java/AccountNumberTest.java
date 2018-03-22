@@ -1,3 +1,5 @@
+package com.bank;
+
 import com.bank.AccountNumber;
 import com.bank.InvalidAccountNumberException;
 import org.junit.Test;
