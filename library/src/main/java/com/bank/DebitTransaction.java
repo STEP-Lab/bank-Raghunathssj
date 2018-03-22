@@ -5,7 +5,7 @@ import java.util.Date;
 public class DebitTransaction extends Transaction {
 
     public DebitTransaction(float amount, String to) {
-        this(new Date(),amount,to);
+        this(new Date(), amount, to);
 
     }
 

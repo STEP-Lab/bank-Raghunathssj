@@ -8,7 +8,7 @@ public abstract class Transaction {
     protected final String to;
     protected Date date;
 
-    public Transaction( Date date, float amount , String to) {
+    public Transaction(Date date, float amount, String to) {
         this.to = to;
         this.date = date;
         this.amount = amount;

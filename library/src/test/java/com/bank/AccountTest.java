@@ -1,9 +1,5 @@
 package com.bank;
 
-import com.bank.Account;
-import com.bank.AccountNumber;
-import com.bank.InvalidAccountNumberException;
-import com.bank.MinimumBalanceException;
 import org.junit.Before;
 import org.junit.Test;
 

@@ -11,6 +11,6 @@ public class Transactions {
     }
 
     public void debit(float amount, String to) {
-        this.transactions.add(new DebitTransaction(amount,to));
+        this.transactions.add(new DebitTransaction(amount, to));
     }
 }
