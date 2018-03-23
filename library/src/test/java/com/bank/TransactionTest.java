@@ -23,8 +23,14 @@ public class TransactionTest {
     }
 
     @Test (expected =InvalidAmountForTransactionException.class)
-    public void mustThrowInvalidAmountForTransactionException() throws InvalidAmountForTransactionException {
+    public void mustThrowInvalidAmountForTransactionExceptionIfNegativeAmountIsGiven() throws InvalidAmountForTransactionException {
         Date date = new Date();
         new DebitTransaction(date,-1000,"to_someone");
+    }
+
+    @Test (expected = InvalidAmountForTransactionException.class)
+    public void mustThrowInvalidAmountForTransactionExceptionIfZeroAmountIsGiven() throws InvalidAmountForTransactionException {
+        Date date = new Date();
+        new DebitTransaction(date,0,"to_someone");
     }
 }
