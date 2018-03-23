@@ -8,10 +8,17 @@ public abstract class Transaction {
     protected final String to;
     protected Date date;
 
-    public Transaction(Date date, float amount, String to) {
+    public Transaction(Date date, float amount, String to) throws InvalidAmountForTransactionException {
         this.to = to;
         this.date = date;
+        validateAmount(amount);
         this.amount = amount;
+    }
+
+    private void validateAmount(float amount) throws InvalidAmountForTransactionException {
+        if (amount <=0){
+            throw new InvalidAmountForTransactionException();
+        }
     }
 
     public Date getDate() {

@@ -9,16 +9,22 @@ import static org.junit.Assert.assertThat;
 
 public class TransactionTest {
     @Test
-    public void mustAddTimeInDebitTransaction() {
+    public void mustAddTimeInDebitTransaction() throws InvalidAmountForTransactionException {
         Date date = new Date();
         Transaction transaction = new DebitTransaction(date, 1000, "to_someone");
         assertThat(transaction.getDate(), is(date));
     }
 
     @Test
-    public void mustAddTimeInCreditTransaction() {
+    public void mustAddTimeInCreditTransaction() throws InvalidAmountForTransactionException {
         Date date = new Date();
         Transaction transaction = new CreditTransaction(date, 1000, "from_me");
         assertThat(transaction.getDate(), is(date));
+    }
+
+    @Test (expected =InvalidAmountForTransactionException.class)
+    public void mustThrowInvalidAmountForTransactionException() throws InvalidAmountForTransactionException {
+        Date date = new Date();
+        new DebitTransaction(date,-1000,"to_someone");
     }
 }
