@@ -3,7 +3,9 @@ package com.bank;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.hamcrest.core.IsCollectionContaining.hasItem;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 
 public class AccountTest {
 
@@ -25,13 +27,14 @@ public class AccountTest {
     }
 
     @Test
-    public void debitAmountFromAccount() throws MinimumBalanceException {
-        assertEquals(account.debit(200),1800,0);
+    public void debitAmountFromAccount() throws MinimumBalanceException, InvalidAmountForTransactionException {
+        assertEquals(account.debit(200, "to_someone"),1800,0);
+        assertThat(account.getTransactions(),hasItem(new DebitTransaction(200,"to_someone")));
     }
 
     @Test(expected =MinimumBalanceException.class)
-    public void mustThrowMinimumBalanceExceptionIfMinimumBalanceIsNotPresent() throws MinimumBalanceException {
-        account.debit(2100);
+    public void mustThrowMinimumBalanceExceptionIfMinimumBalanceIsNotPresent() throws MinimumBalanceException, InvalidAmountForTransactionException {
+        account.debit(2100, "to_someone");
     }
 
     @Test

@@ -17,4 +17,8 @@ public class Transactions {
     public void credit(float amount, String from) throws InvalidAmountForTransactionException {
         this.transactions.add(new CreditTransaction(amount,from));
     }
+
+    public ArrayList<Transaction> getTransactions() {
+        return transactions;
+    }
 }
