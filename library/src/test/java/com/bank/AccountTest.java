@@ -38,7 +38,8 @@ public class AccountTest {
     }
 
     @Test
-    public void creditAmountFromAccount() {
-        assertEquals(account.credit(1000),3000,0);
+    public void creditAmountFromAccount() throws InvalidAmountForTransactionException {
+        assertEquals(account.credit(1000, "from_me"),3000,0);
+        assertThat(account.getTransactions(),hasItem(new CreditTransaction(1000,"from_me")));
     }
 }

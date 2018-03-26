@@ -30,7 +30,8 @@ public class Account {
         return balance -= amount;
     }
 
-    public float credit(float amount) {
+    public float credit(float amount, String from) throws InvalidAmountForTransactionException {
+        transactions.credit(amount,from);
         return balance += amount;
     }
 
