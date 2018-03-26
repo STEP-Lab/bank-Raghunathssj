@@ -2,14 +2,15 @@ package com.bank;
 
 public class Account {
     private static final int MINIMUM_BALANCE = 1000;
+    private final AccountNumber accountNumber;
     private float balance;
 
-    public Account(AccountNumber accountNumber, float balance) throws MinimumBalanceException {
-        validateBalance(balance);
+    private Account(AccountNumber accountNumber, float balance) {
+        this.accountNumber = accountNumber;
         this.balance = balance;
     }
 
-    private void validateBalance(float balance) throws MinimumBalanceException {
+    private static void validateBalance(float balance) throws MinimumBalanceException {
         if (balance < MINIMUM_BALANCE) {
             throw new MinimumBalanceException();
         }
@@ -26,5 +27,15 @@ public class Account {
 
     public float credit(float amount) {
         return balance += amount;
+    }
+
+    public static Account createAccount(String number, float amount) throws InvalidAccountNumberException, MinimumBalanceException {
+        AccountNumber accountNumber = new AccountNumber(number);
+        validateBalance(amount);
+        return new Account(accountNumber,amount);
+    }
+
+    public AccountNumber getAccountNumber() {
+        return accountNumber;
     }
 }

@@ -11,7 +11,7 @@ public class AccountTest {
 
     @Before
     public void setUp() throws MinimumBalanceException, InvalidAccountNumberException {
-        account = new Account(new AccountNumber("1234-1234"), 2000);
+        account = Account.createAccount("1234-1234",2000);
     }
 
     @Test
@@ -21,7 +21,7 @@ public class AccountTest {
 
     @Test(expected = MinimumBalanceException.class)
     public void mustThrowExceptionIfMinimumBalanceIsNotPresent() throws MinimumBalanceException, InvalidAccountNumberException {
-        new Account(new AccountNumber("1234-1234"),200);
+        Account.createAccount("1234-1542",200);
     }
 
     @Test
