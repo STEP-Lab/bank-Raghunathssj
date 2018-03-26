@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.hamcrest.core.IsCollectionContaining.hasItem;
+import static org.hamcrest.core.IsCollectionContaining.hasItems;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
@@ -41,5 +42,12 @@ public class AccountTest {
     public void creditAmountFromAccount() throws InvalidAmountForTransactionException {
         assertEquals(account.credit(1000, "from_me"),3000,0);
         assertThat(account.getTransactions(),hasItem(new CreditTransaction(1000,"from_me")));
+    }
+
+    @Test
+    public void shouldAddAllTransactionsToTransactionsArrayInAccount() throws InvalidAmountForTransactionException, MinimumBalanceException {
+        account.credit(2000,"from_me");
+        account.debit(1500,"to_me");
+        assertThat(account.getTransactions(),hasItems(new CreditTransaction(2000,"from_me"),new DebitTransaction(1500,"to_me")));
     }
 }
