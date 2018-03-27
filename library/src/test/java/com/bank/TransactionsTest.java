@@ -36,4 +36,12 @@ public class TransactionsTest {
         transactions.credit(3000,"from_someone");
         assertThat(transactions.transactions,hasItems(new DebitTransaction(new Date(),2000,"to_me"),new CreditTransaction(new Date(),3000,"from_someone")));
     }
+
+    @Test
+    public void shouldFilterTransactionsByType() throws InvalidAmountForTransactionException {
+        transactions.debit(1000,"to_me");
+        transactions.credit(2000,"from_me");
+        transactions.debit(1500,"to_me");
+        assertThat(transactions.filterByType("debit").transactions,hasItems(new DebitTransaction(1000,"to_me"),new DebitTransaction(1500,"to_me")));
+    }
 }

@@ -39,4 +39,6 @@ public abstract class Transaction {
 
         return Objects.hash(amount, to);
     }
+
+    public abstract String getType();
 }

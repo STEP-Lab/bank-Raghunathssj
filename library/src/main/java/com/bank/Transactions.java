@@ -11,14 +11,28 @@ public class Transactions {
     }
 
     public void debit(float amount, String to) throws InvalidAmountForTransactionException {
-        this.transactions.add(new DebitTransaction(amount, to));
+        add(new DebitTransaction(amount, to));
     }
 
     public void credit(float amount, String from) throws InvalidAmountForTransactionException {
-        this.transactions.add(new CreditTransaction(amount,from));
+        add(new CreditTransaction(amount,from));
     }
 
     public ArrayList<Transaction> getTransactions() {
         return transactions;
+    }
+
+    public Transactions filterByType(String type) {
+        Transactions transactions = new Transactions();
+        for (Transaction transaction: this.transactions){
+            if (transaction.getType()==type){
+                transactions.add(transaction);
+            }
+        }
+        return transactions;
+    }
+
+    private void add(Transaction transaction) {
+        this.transactions.add(transaction);
     }
 }
