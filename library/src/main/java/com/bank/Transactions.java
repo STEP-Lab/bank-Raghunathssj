@@ -43,7 +43,6 @@ public class Transactions {
                 transactions.add(transaction);
             }
         }
-        System.out.println(transactions);
         return transactions;
     }
 
