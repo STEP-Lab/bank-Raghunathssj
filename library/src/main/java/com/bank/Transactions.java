@@ -25,7 +25,7 @@ public class Transactions {
     public Transactions filterByType(String type) {
         Transactions transactions = new Transactions();
         for (Transaction transaction: this.transactions){
-            if (transaction.getType()==type){
+            if (transaction.getType().equals(type)){
                 transactions.add(transaction);
             }
         }
@@ -34,5 +34,16 @@ public class Transactions {
 
     private void add(Transaction transaction) {
         this.transactions.add(transaction);
+    }
+
+    public Transactions filterByAmountAtLeast(float amount) {
+        Transactions transactions = new Transactions();
+        for (Transaction transaction: this.transactions){
+            if (transaction.getAmount()>=amount){
+                transactions.add(transaction);
+            }
+        }
+        System.out.println(transactions);
+        return transactions;
     }
 }

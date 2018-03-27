@@ -44,4 +44,12 @@ public class TransactionsTest {
         transactions.debit(1500,"to_me");
         assertThat(transactions.filterByType("debit").transactions,hasItems(new DebitTransaction(1000,"to_me"),new DebitTransaction(1500,"to_me")));
     }
+
+    @Test
+    public void shouldFilterTransactionsByAmount() throws InvalidAmountForTransactionException {
+        transactions.debit(1000,"to_me");
+        transactions.credit(3000,"from_me");
+        transactions.debit(500,"to_me");
+        assertThat(transactions.filterByAmountAtLeast(1000).transactions,hasItems(new CreditTransaction(3000,"from_me"),new DebitTransaction(1000,"to_me")));
+    }
 }

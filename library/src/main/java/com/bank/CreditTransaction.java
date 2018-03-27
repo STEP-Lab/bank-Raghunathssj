@@ -14,6 +14,11 @@ public class CreditTransaction extends Transaction {
             return type;
     }
 
+    @Override
+    public float getAmount() {
+        return amount;
+    }
+
     public CreditTransaction(float amount, String from) throws InvalidAmountForTransactionException {
         this(new Date(),amount, from);
     }

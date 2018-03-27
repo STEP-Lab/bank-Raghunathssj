@@ -19,4 +19,9 @@ public class DebitTransaction extends Transaction {
     public String getType() {
         return type;
     }
+
+    @Override
+    public float getAmount() {
+        return amount;
+    }
 }
