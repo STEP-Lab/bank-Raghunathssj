@@ -36,7 +36,7 @@ public class Account {
     }
 
     public static Account createAccount(String number, float amount) throws InvalidAccountNumberException, MinimumBalanceException {
-        AccountNumber accountNumber = new AccountNumber(number);
+        AccountNumber accountNumber = AccountNumber.createAccountNumber(number);
         validateBalance(amount);
         return new Account(accountNumber,amount);
     }
