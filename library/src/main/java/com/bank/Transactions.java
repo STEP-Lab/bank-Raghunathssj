@@ -46,4 +46,14 @@ public class Transactions {
         System.out.println(transactions);
         return transactions;
     }
+
+    public Transactions filterByAmountLesserThan(float amount) {
+        Transactions transactions = new Transactions();
+        for (Transaction transaction: this.transactions){
+            if (transaction.getAmount()<amount){
+                transactions.add(transaction);
+            }
+        }
+        return transactions;
+    }
 }

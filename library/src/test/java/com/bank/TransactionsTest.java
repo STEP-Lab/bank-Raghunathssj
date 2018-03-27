@@ -46,10 +46,18 @@ public class TransactionsTest {
     }
 
     @Test
-    public void shouldFilterTransactionsByAmount() throws InvalidAmountForTransactionException {
+    public void shouldFilterTransactionsByAmountAtLeastGivenAmount() throws InvalidAmountForTransactionException {
         transactions.debit(1000,"to_me");
         transactions.credit(3000,"from_me");
         transactions.debit(500,"to_me");
         assertThat(transactions.filterByAmountAtLeast(1000).transactions,hasItems(new CreditTransaction(3000,"from_me"),new DebitTransaction(1000,"to_me")));
+    }
+
+    @Test
+    public void shouldFilterTransactionsByAmountLesserThanGivenAmount() throws InvalidAmountForTransactionException {
+        transactions.debit(1000,"to_me");
+        transactions.credit(3000,"from_me");
+        transactions.debit(500,"to_me");
+        assertThat(transactions.filterByAmountLesserThan(1000).transactions,hasItem(new DebitTransaction(500,"to_me")));
     }
 }
