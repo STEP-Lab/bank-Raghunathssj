@@ -7,6 +7,7 @@ public abstract class Transaction {
     protected final float amount;
     protected final String to;
     protected Date date;
+    private String type = null;
 
     public Transaction(Date date, float amount, String to) throws InvalidAmountForTransactionException {
         this.to = to;
@@ -43,4 +44,14 @@ public abstract class Transaction {
     public abstract String getType();
 
     public abstract float getAmount();
+
+    @Override
+    public String toString() {
+        return "Transaction{" +
+                "type='" + type + '\''+
+                "amount=" + amount +
+                ", to='" + to + '\'' +
+                ", date=" + date +
+                '}';
+    }
 }
