@@ -1,6 +1,7 @@
 package com.bank;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Transactions {
 
@@ -54,5 +55,19 @@ public class Transactions {
             }
         }
         return transactions;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Transactions)) return false;
+        Transactions that = (Transactions) o;
+        return Objects.equals(transactions, that.transactions);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(transactions);
     }
 }

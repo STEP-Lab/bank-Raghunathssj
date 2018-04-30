@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.util.Date;
 
+import static org.hamcrest.core.Is.is;
 import static org.hamcrest.core.IsCollectionContaining.hasItem;
 import static org.hamcrest.core.IsCollectionContaining.hasItems;
 import static org.junit.Assert.assertThat;
@@ -21,7 +22,9 @@ public class TransactionsTest {
     @Test
     public void mustRecordDebitTransaction() throws InvalidAmountForTransactionException {
         transactions.debit(1000,"to_someone");
-        assertThat(transactions.getTransactions(),hasItem(new DebitTransaction(new Date(),1000,"to_someone")));
+        Transactions result = new Transactions();
+        result.debit(1000,"to_someone");
+        assertThat(this.transactions,is(result));
     }
 
     @Test
